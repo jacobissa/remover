@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  remover:
+    container_name: remover
+    image: jacobissa/remover:latest
+    volumes:
+      - /home/pi/docker/remover/watch:/app/watch
+      - /home/pi/docker/remover/logs:/app/logs
+    environment:
+      - TZ=Europe/Berlin
+      - PATTERN=*
+      - INTERVAL=5s
+    restart: unless-stopped
